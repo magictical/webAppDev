@@ -8,6 +8,6 @@ var faker = require("faker");
 var productName = faker.commerce.productName;
 var productPrice = faker.commerce.price;
 for (var i = 0; i < 10; i++) {
-    console.log(productName() + " " + productPrice());    
+    console.log(productName() + " - " + productPrice());    
 }
 
