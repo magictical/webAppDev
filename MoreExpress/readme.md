@@ -4,6 +4,10 @@
 * Explain what EJS is and why we use it
     : EJS helps express to display html file (text, img etc..)
 * Pass variables to EJS templates
+    : to pass the variable from app.js to xx.ejs, use JSP expression <%= varName %>
+    ex> in the app.js - var thing = req.params.thing <== thing은 :route 임
+                        res.render("love.ejs", {thingVar: thing});
+                xx.ejs에서 <%= thingVar %> 사용시 thingVar의 value인 thing이 참조됨.
 
 
 #EJS Control Flow
