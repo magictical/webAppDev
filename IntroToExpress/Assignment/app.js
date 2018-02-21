@@ -23,6 +23,15 @@ app.get("/speak/:animalName", function(req, res) {
 
 
 //     3.3 "/repeat/hello/3" - print whatever word 'n'times
+app.get("/repeat/:word/:reps", function(req, res) {
+    var uWord = req.params.word;
+    var uReps = req.params.reps;
+    var result="";
+    for(var i = 0; i < uReps; i++) {
+        result += uWord + " "; 
+    }
+    res.send(result);
+})
 //     3.4 For the rest of the routes isn't defined - Sorry, page not found... What are you doing with your life?
 
 // setting for server (turning On!)
