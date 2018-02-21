@@ -14,7 +14,10 @@
 
 * Show examples of control flow in EJS templates
 * Write if statements in an EJS file
+    <%= %> - html tag와 같이 사용될 경우 ex) <p> hey there <%= 5 +5 %> </p>
+    <%  %> - 조건이나 비교같은 논리 연산자만 사용할 경우
 * Write loops in an EJS file
+*
 
 #Styles And Partials
 
