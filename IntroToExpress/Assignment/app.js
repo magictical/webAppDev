@@ -9,7 +9,18 @@ app.get("/", function(req, res) {
     
 //     3.2 "speak/pig" - the pig says 'Oink'
 //     3.2 "speak/cow" - the pig says 'Moo'
-//     3.2 "speak/dog" - the pig says 'Woof Woof'
+//     3.2 "speak/dog" - the pig says 'Woof Woof'res.send("Oink");
+app.get("/speak/:animalName", function(req, res) {
+    var animal = req.params.animalName;
+    if(animal === "pig") {
+        res.send("Oink");
+    } else if (animal === "cow") {
+        res.send("Moo");
+    } else if (animal === "dog") {
+        res.send("Woof Woof");
+    }
+})
+
 
 //     3.3 "/repeat/hello/3" - print whatever word 'n'times
 //     3.4 For the rest of the routes isn't defined - Sorry, page not found... What are you doing with your life?
