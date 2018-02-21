@@ -21,6 +21,7 @@ app.get("/speak/:animalName", function(req, res) {
     // } else {
     //     res.send("can't find your animal");
     // }
+    
 //make more dryier code!    
 var animal = req.params.animalName.toLowerCase();
 var sounds = {
@@ -33,7 +34,7 @@ var sounds = {
 // "Moo" as a value.
 var sound = sounds[animal];
 console.log("sound is like : " + sound);
-if(sound == undefined) {
+if(sound === undefined) {
     res.send("Sorry no route for that address!");
 } else {
     res.send(sound);    
