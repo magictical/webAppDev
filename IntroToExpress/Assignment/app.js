@@ -11,14 +11,34 @@ app.get("/", function(req, res) {
 //     3.2 "speak/cow" - the pig says 'Moo'
 //     3.2 "speak/dog" - the pig says 'Woof Woof'res.send("Oink");
 app.get("/speak/:animalName", function(req, res) {
-    var animal = req.params.animalName;
-    if(animal === "pig") {
-        res.send("Oink");
-    } else if (animal === "cow") {
-        res.send("Moo");
-    } else if (animal === "dog") {
-        res.send("Woof Woof");
-    }
+    // var animal = req.params.animalName;
+    // if(animal === "pig") {
+    //     res.send("Oink");
+    // } else if (animal === "cow") {
+    //     res.send("Moo");
+    // } else if (animal === "dog") {
+    //     res.send("Woof Woof");
+    // } else {
+    //     res.send("can't find your animal");
+    // }
+//make more dryier code!    
+var animal = req.params.animalName.toLowerCase();
+var sounds = {
+    pig : "Oink",
+    cow : "Moo",
+    dog : "Woff Woof"
+}
+// the sound will contain value of sounds which use [animal] as a key
+// briefly, if var 'animal' is cow, 'cow' is key for sounds array it will return 
+// "Moo" as a value.
+var sound = sounds[animal];
+console.log("sound is like : " + sound);
+if(sound == undefined) {
+    res.send("Sorry no route for that address!");
+} else {
+    res.send(sound);    
+}
+
 })
 
 
