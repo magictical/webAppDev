@@ -13,7 +13,8 @@ app.get("/fallinlovewith/:thing", function(req, res) {
     
     //use render()
     var thing = req.params.thing;
-    res.render("love.ejs");
+    // send data through key-value set!
+    res.render("love.ejs", {thingVar: thing} );
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
