@@ -33,7 +33,9 @@ app.get("/repeat/:word/:reps", function(req, res) {
     res.send(result);
 })
 //     3.4 For the rest of the routes isn't defined - Sorry, page not found... What are you doing with your life?
-
+app.get("*", function(req, res) {
+    res.send("Sorry, page not found... What are you doing with your life?");
+})
 // setting for server (turning On!)
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has just started!!");
