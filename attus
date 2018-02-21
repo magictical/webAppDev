@@ -1,0 +1,41 @@
+[33mcommit f3cecf9357aace7a1e78ee71e976e5f928dcea4e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Wed Feb 21 05:01:47 2018 +0000
+
+    Install express and add into dependency at package.json
+
+[33mcommit d55a9ab9f8597fd50685b05918808a7eb69328c4[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Wed Feb 21 04:56:49 2018 +0000
+
+    Add file -  package.json
+
+[33mcommit cc603091101f0d0318cacbfed42abc8273bdd16d[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Wed Feb 21 04:51:57 2018 +0000
+
+    Add A objectives file to clarify the order of operation.
+
+[33mcommit d37492a9ad8987c92c2684c72157f070ee6404fb[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Wed Feb 21 04:33:21 2018 +0000
+
+    S23 .232 Categorizing and tracking route
+
+[33mcommit e015af0368612a4c8e6a76b6a1472db4e4a22927[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Wed Feb 21 03:33:46 2018 +0000
+
+    Create package.json file
+
+[33mcommit 755aedf1f43172b208bb8baca637e4b0b06984c9[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Mon Feb 19 06:54:54 2018 +0000
+
+    Learn How to use NPM and lib, delete redundant files.
+
+[33mcommit 8f3116bb818f16d4728b41c82b47549d520dc63b[m
+Author: Ian Kim <magicticaldev@gmail.com>
+Date:   Mon Feb 19 04:39:17 2018 +0000
+
+    A Commit Start From introToNPM
