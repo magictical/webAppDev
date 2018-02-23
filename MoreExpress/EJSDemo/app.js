@@ -3,11 +3,14 @@ var app = express();
 
 //setting for default folder 'public' 
 app.use(express.static("public"));
+//''.ejs' will be omiitted by this setting
+ap.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
     // res.send("Welcome to the home Page!");
     // change to render
-    res.render("home.ejs");
+    //skip the 'ejs'
+    res.render("home");
 });
 
 app.get("/fallinlovewith/:thing", function(req, res) {
@@ -17,7 +20,8 @@ app.get("/fallinlovewith/:thing", function(req, res) {
     //use render()
     var thing = req.params.thing;
     // send data through key-value set!
-    res.render("love.ejs", {thingVar: thing} );
+    //skip the 'ejs'
+    res.render("love", {thingVar: thing} );
 });
 
 app.get("/posts", function(req, res) {
@@ -26,7 +30,8 @@ app.get("/posts", function(req, res) {
         {title: "proper warming up", author: "Ian kim"},
         {title: "Statistic for Avoiding injury", author: "Dr. Ian"}
         ];
-        res.render("posts.ejs", {posts:posts});
+        //skip the 'ejs'
+        res.render("posts", {posts:posts});
         
 })
 
