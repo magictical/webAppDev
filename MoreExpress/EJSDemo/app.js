@@ -4,7 +4,7 @@ var app = express();
 //setting for default folder 'public' 
 app.use(express.static("public"));
 //''.ejs' will be omiitted by this setting
-ap.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
     // res.send("Welcome to the home Page!");
