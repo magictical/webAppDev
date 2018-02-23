@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="/app.css">
+<!--includes header template in partials folder-->
+<% include partials/header %>
 
 <h1>you fell in love with : 5+5 => this right side is JSP!, Var is :  <%= thingVar.toUpperCase()%> </h1>
 <% if(thingVar === "climbing") { %>
@@ -7,3 +8,5 @@
     <p>you have to workout harder!</p>
 <% } %>
 <p>P.S this is the love.ejs</p>
+<!--inclues footer template-->
+<% include partials/footer %>

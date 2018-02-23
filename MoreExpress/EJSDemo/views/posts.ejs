@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="app.css">
+<% include partials/header %>
 
 <h1>What is the famous book in this week?</h1>
 <% for (var i = 0; i < posts.length; i++) { %>
@@ -12,3 +12,5 @@
         <%= post.title %> - <strong><%= post.author %></strong>
     </li>
 <% }) %>
+
+<% include partials/footer %>
