@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 
+//setting for default folder 'public' 
+app.use(express.static("public"));
+
 app.get("/", function(req, res) {
     // res.send("Welcome to the home Page!");
     // change to render
