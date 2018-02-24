@@ -3,10 +3,11 @@ var app = express();
 
 var bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // send, render에서 ejs 파일 불러올때 확장자명 생략하는 설정
 app.set("view engine", "ejs");
+
 
 // set default route
 app.get("/", function(req, res) {
@@ -16,6 +17,7 @@ app.get("/", function(req, res) {
 
 // add route for addfriends - this will be the route for postRequest
 app.post("/addfriends", function(req, res) {
+    console.log(req.body);
     res.send("You are at /addfriends route!!");
 })
 
