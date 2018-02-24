@@ -18,8 +18,10 @@ app.get("/", function(req, res) {
 
 // add route for addfriends - this will be the route for postRequest
 app.post("/addfriends", function(req, res) {
+    // add friend name at array
     friends.push(req.body.newfriend);
-    res.send("You are at /addfriends route!!");
+    // move to /friends route after push() 
+    res.redirect("/friends");
 })
 
 // add frends list
