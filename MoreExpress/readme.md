@@ -24,7 +24,8 @@
 * Show how to properly include public assets
 * Properly configure our app to use EJS
 * Use partials to dry up our code!
-
+    - :<% inclue /'경로'/name %> 으로 header, footer template 호출, 
+경로 지정 기억할것
 
 
 #Post Requests!!!
