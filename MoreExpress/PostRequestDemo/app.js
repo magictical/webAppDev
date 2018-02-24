@@ -10,6 +10,12 @@ app.get("/", function(req, res) {
    res.render("home") 
 });
 
+// add frends list
+app.get("/friends", function(req, res) {
+    var friends = ["Tony", "Murray", "Kim", "Endo", "Julia"];
+    res.render("friends",{friends:friends});
+})
+
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server Started!!");
 });
