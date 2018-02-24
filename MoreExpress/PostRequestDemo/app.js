@@ -1,6 +1,10 @@
 var express = require("express");
 var app = express();
 
+var bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({extended:true}));
+
 // send, render에서 ejs 파일 불러올때 확장자명 생략하는 설정
 app.set("view engine", "ejs");
 
