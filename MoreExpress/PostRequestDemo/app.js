@@ -10,6 +10,11 @@ app.get("/", function(req, res) {
    res.render("home") 
 });
 
+// add route for addfriends - this will be the route for postRequest
+app.post("/addfriends", function(req, res) {
+    res.send("You are at /addfriends route!!");
+})
+
 // add frends list
 app.get("/friends", function(req, res) {
     var friends = ["Tony", "Murray", "Kim", "Endo", "Julia"];
