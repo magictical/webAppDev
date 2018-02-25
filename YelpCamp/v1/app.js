@@ -14,7 +14,8 @@ app.get("/campgrounds", function(req, res) {
         {name: "Nawansa", image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg"},
         {name: "Sinan", image: "https://farm8.staticflickr.com/7254/13876685593_19feb04904.jpg"}
     ]
-    res.render("campgrounds");
+    // send object to campgrounds.ejs template
+    res.render("campgrounds", {campgrounds:campgrounds});
 })
 
 app.listen(process.env.PORT, process.env.IP, function() {

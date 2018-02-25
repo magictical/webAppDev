@@ -1,3 +1,12 @@
 <h1>This is Campgrounds Page!!</h1>
 
+<% campgrounds.forEach(function(campground) { %>
+    <div>
+        <h4><strong><%= campground.name %></strong></h4>
+        <image src="<%= campground.image %>"></image>
+    </div>
+    
+<% }) %>
+
+<br>
 <a href="/">Move to Home</a>
