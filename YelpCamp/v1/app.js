@@ -18,6 +18,10 @@ app.get("/campgrounds", function(req, res) {
     res.render("campgrounds", {campgrounds:campgrounds});
 })
 
+// add POST route
+app.post("/campgrounds", function(req, res) {
+    res.send("YOU are AT POST ROUTE");
+})
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
 })
