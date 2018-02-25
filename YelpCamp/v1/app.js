@@ -1,8 +1,11 @@
 var express = require("express");
 var app = express();
 
+app.set("view engine", "ejs");
+
+
 app.get("/", function(req, res) {
-    res.send("this will be the landing page!!");
+    res.render("landing");
 })
 
 app.listen(process.env.PORT, process.env.IP, function() {
