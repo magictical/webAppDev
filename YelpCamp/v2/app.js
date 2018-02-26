@@ -74,6 +74,12 @@ app.post("/campgrounds", function(req, res) {
 app.get("/campgrounds/new", function(req, res) {
     res.render("new");
 }) 
+
+//becaful with order of the routes! small rout have to be first! 
+//like campground/new, is first than campgrounds/:id
+app.get("/campgrounds/:id", function(req, res) {
+    res.send("this will be the show Page!");
+})
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
 })

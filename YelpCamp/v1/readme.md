@@ -36,3 +36,15 @@ Each Campground has:
 * Add description to our campground model
 * Show db.collection.drop()
 * Add a show route/template 
+
+
+//The routes in this app
+RESTFUL ROUTES
+
+name      url      verb    desc.
+===============================================
+INDEX   /dogs      GET   Display a list of all dog
+NEW     /dogs/new  GET   Displays form to make a new dog
+CREATE  /dogs      POST  Add new dog to DB
+<!--특정 1개의 정보를 상세히 보여줄때 사용할 route-->
+SHOW    /dogs/:id  GET   Shows info about one dog
