@@ -45,7 +45,7 @@ app.get("/campgrounds", function(req, res) {
             console.log(error)
         } else {
             // allCampgrounds is a data from DB!
-            res.render("campgrounds", {campgrounds:allCampgrounds});
+            res.render("index", {campgrounds:allCampgrounds});
         }
     })
     
