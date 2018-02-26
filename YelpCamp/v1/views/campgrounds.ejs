@@ -11,16 +11,22 @@
         
     </header>
     
-    <% campgrounds.forEach(function(campground) { %>
-        <div>
-            <h4><strong><%= campground.name %></strong></h4>
-            <image src="<%= campground.image %>">
+    <!--row를 사용해서 thumbnail 정렬하기, 정렬 스타일style row에 적용하기-->
+    <div class="row" style="display:flex; flex-wrap:wrap;">
+        <% campgrounds.forEach(function(campground) { %>
+        <div class="col-md-3 col-sm-6">
+            <!--align the images-->
+            <div class="thumbnail">
+                <image src="<%= campground.image %>">
+                <!--add space for caption-->
+                <div class="caption">
+                    <h4><strong><%= campground.name %></strong></h4>    
+                </div>
+            </div>
         </div>
+        <% }) %>
         
-    <% }) %>
-    
-    <br>
+    </div>
     <a href="/">Move to Home</a>
-    
-    <% include partials/footer %>
 </div>
+<% include partials/footer %>
