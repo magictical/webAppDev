@@ -1,3 +1,4 @@
+// mongoose is a interface btw mongoDB and JSP  
 var mongoose = require("mongoose");
 //connect to the DB - if not exist, create it
 mongoose.connect("mongodb://localhost/cat_app");
@@ -27,6 +28,19 @@ var Cat = mongoose.model("Cat", catSchema);
 //         console.log(cat);
 //         }
 // });
+
+// make + save = create!
+Cat.create({
+    name: "Snow White",
+    age:  15,
+    temperament: "Bland"
+}, function(error, cat) {
+    if(error) {
+        console.log(error);
+    } else {
+        console.log(cat);
+    }
+});
 
 //retrieve all cats from the DB and console.log each one.
 Cat.find({}, function(error, cats) {
