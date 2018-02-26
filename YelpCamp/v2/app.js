@@ -12,22 +12,24 @@ app.set("view engine", "ejs");
 //SCHEMA SETUP
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
-})
+    image: String,
+    description: String
+});
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-// Campground.create(
-//     {name: "Nawansa", 
-//     image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg"
-//     }, function(error, campground) {
-//         if(error) {
-//             console.log(error);
-//         } else {
-//             console.log("Add campground!");
-//             console.log(campground);
-//         }
-//     });
+Campground.create(
+    {name: "Nawansa", 
+    image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg",
+    description: "might be a good place to rest!"
+    }, function(error, campground) {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log("Add campground!");
+            console.log(campground);
+        }
+    });
 
 app.get("/", function(req, res) {
     res.render("landing");
@@ -78,7 +80,7 @@ app.get("/campgrounds/new", function(req, res) {
 //becaful with order of the routes! small rout have to be first! 
 //like campground/new, is first than campgrounds/:id
 app.get("/campgrounds/:id", function(req, res) {
-    res.send("this will be the show Page!");
+    res.render("show");
 })
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
