@@ -18,18 +18,18 @@ var campgroundSchema = new mongoose.Schema({
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-Campground.create(
-    {name: "Nawansa", 
-    image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg",
-    description: "might be a good place to rest!"
-    }, function(error, campground) {
-        if(error) {
-            console.log(error);
-        } else {
-            console.log("Add campground!");
-            console.log(campground);
-        }
-    });
+// Campground.create(
+//     {name: "Nawansa", 
+//     image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg",
+//     description: "might be a good place to rest!"
+//     }, function(error, campground) {
+//         if(error) {
+//             console.log(error);
+//         } else {
+//             console.log("Add campground!");
+//             console.log(campground);
+//         }
+//     });
 
 app.get("/", function(req, res) {
     res.render("landing");
@@ -56,8 +56,9 @@ app.post("/campgrounds", function(req, res) {
     //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
     var imgUrl = req.body.image;
+    var desc = req.body.description;
     //save input to obj
-    var newCampground = {name:name, image:imgUrl};
+    var newCampground = {name:name, image:imgUrl, description: desc};
     //create Campground obj and save to DB
     Campground.create(newCampground, function(error, newCampground) {
         if(error) {
@@ -77,10 +78,20 @@ app.get("/campgrounds/new", function(req, res) {
     res.render("new");
 }) 
 
+//SHOW - shows more info about one campground
 //becaful with order of the routes! small rout have to be first! 
 //like campground/new, is first than campgrounds/:id
 app.get("/campgrounds/:id", function(req, res) {
-    res.render("show");
+    //find the campground with provided ID
+    Campground.findById(req.params.id, function(error, foundCampground) {
+        if(error) {
+            console.log(error);
+        } else {
+            //render show template with that campground
+            res.render("show", {campground: foundCampground});        
+        }
+    })
+    
 })
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
