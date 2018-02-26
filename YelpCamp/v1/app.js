@@ -25,7 +25,7 @@ app.get("/campgrounds", function(req, res) {
 
 // add POST route
 app.post("/campgrounds", function(req, res) {
-    //get name and imgUrl new.ejs
+    //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
     var imgUrl = req.body.image;
     var newCampground = {name:name, image:imgUrl};
