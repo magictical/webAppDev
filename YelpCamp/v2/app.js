@@ -9,6 +9,26 @@ mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+//SCHEMA SETUP
+var campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+})
+
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+Campground.create(
+    {name: "Nawansa", 
+    image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg"
+    }, function(error, campground) {
+        if(error) {
+            console.log(error);
+        } else {
+            console.log("Add campground!");
+            console.log(campground);
+        }
+    });
+
 var campgrounds = [
         {name: "Bumusa", image: "https://farm3.staticflickr.com/2222/5763171257_b604848409.jpg"},
         {name: "Nawansa", image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg"},
