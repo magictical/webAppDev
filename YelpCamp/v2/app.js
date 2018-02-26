@@ -1,8 +1,10 @@
-var express = require("express");
-var app = express();
+var express    = require("express"), 
+    app        = express(),
 // use body-parser
-var bodyParser = require("body-parser");
+    bodyParser = require("body-parser"),
+    mongoose   = require("mongoose");
 
+mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
