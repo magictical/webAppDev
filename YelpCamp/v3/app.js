@@ -2,8 +2,12 @@ var express    = require("express"),
     app        = express(),
 // use body-parser
     bodyParser = require("body-parser"),
-    mongoose   = require("mongoose");
-    Campground = require("./models/campground");
+    mongoose   = require("mongoose"),
+    Campground = require("./models/campground"),
+    seedDB      = require("./seeds");
+    
+//delete all campground!
+seedDB();
 
 mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
