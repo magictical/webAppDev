@@ -30,7 +30,7 @@ app.get("/campgrounds", function(req, res) {
             console.log(error)
         } else {
             // allCampgrounds is a data from DB!
-            res.render("index", {campgrounds:allCampgrounds});
+            res.render("campgrounds/index", {campgrounds:allCampgrounds});
         }
     });
     
@@ -60,7 +60,7 @@ app.post("/campgrounds", function(req, res) {
 
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
 app.get("/campgrounds/new", function(req, res) {
-    res.render("new");
+    res.render("campgrounds/new");
 }) 
 
 //SHOW route- shows more info about one campground
@@ -74,18 +74,22 @@ app.get("/campgrounds/:id", function(req, res) {
         } else {
             console.log(foundCampground);
             //render show template with that campground
-            res.render("show", {campground: foundCampground});        
+            res.render("campgrounds/show", {campground: foundCampground});        
         }
     });
 });
 
+
+
 // ===================================
 // COMMENTS ROUTES //=================
 // ===================================
-app.get("campground/:id/comments/new") {
+app.get("/campgrounds/:id/comments/new", function(req, res) {
     //new가 중복되므로 폴더로 따로 만든다
-    res.render("new");
-}
+    // if(re)
+    res.render("comments/new");
+});
+
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
 });
