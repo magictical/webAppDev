@@ -79,7 +79,13 @@ app.get("/campgrounds/:id", function(req, res) {
     });
 });
 
-
+// ===================================
+// COMMENTS ROUTES //=================
+// ===================================
+app.get("campground/:id/comments/new") {
+    //new가 중복되므로 폴더로 따로 만든다
+    res.render("new");
+}
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
 });
