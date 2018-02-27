@@ -1,1 +1,27 @@
-<h1>this is comment NEW route</h1>
+<% include ../partials/header %>
+<div class="container">
+    <h1 style="text-align:center"> Add New Comment to <%= campground.name %></h1>
+    <!--width : resize the name, imageUrl At <input>-->
+    <div style="width: 30%; margin:30px auto;">
+        <!--campground에 속한 comment를 action의 주소로 보냄?-->
+        <form action="/campgrounds/<%= campground._id %>" method="POST">
+            <!--add class name : form-group & add space btw elements -->
+            <div class="form-group">
+                <!--form-control : use bootstrap conponent-->
+                <input class="form-control" type="text" name="name" placeholder="name">    
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="image" placeholder="image Url">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="description" placeholder="desc">
+            </div>
+            <div class="form-group">
+                <!--btn-primary:btnColor, btn-blick:btn size-->
+                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+            </div>
+        </form>
+        <a href="/">Move to Home</a>    
+    </div>
+</div>
+<% include ../partials/footer %>
