@@ -61,7 +61,7 @@ app.post("/campgrounds", function(req, res) {
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
 app.get("/campgrounds/new", function(req, res) {
     res.render("campgrounds/new");
-}) 
+});
 
 //SHOW route- shows more info about one campground
 //becaful with order of the routes! small rout have to be first! 
@@ -84,10 +84,18 @@ app.get("/campgrounds/:id", function(req, res) {
 // ===================================
 // COMMENTS ROUTES //=================
 // ===================================
+
 app.get("/campgrounds/:id/comments/new", function(req, res) {
-    //new가 중복되므로 폴더로 따로 만든다
-    // if(re)
-    res.render("comments/new");
+    //find campground by id
+    Campground.findById(req.params.id, function(err, campground) {
+        if(err) {
+            console.log(err);
+        } else {
+            //NEW가 campground NEW와 중복되므로 폴더로 따로 만든다 - "comments/ 에 생성"    
+            res.render("comments/new", {campground: campground});        
+        }
+    })
+    
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
