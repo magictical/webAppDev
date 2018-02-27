@@ -30,3 +30,7 @@ Each Campground has:
 <!--* Install and configure mongoose-->
 <!--* Setup campground model-->
 <!--* Use campground model inside of our routes!-->
+
+#Add the Comment model!
+* Make our errors go away!
+* Display comments on campground show page
