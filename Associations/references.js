@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/blog_demo");
+mongoose.connect("mongodb://localhost/blog_demo_2");
 
 //POST - title, content
 //User에 포함된 관계일땐 미리 정의하고 userSchema에서 사용되어야 한다.
