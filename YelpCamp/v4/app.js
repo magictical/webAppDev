@@ -111,10 +111,12 @@ app.post("/campgrounds/:id/comments", function(req, res) {
             // console.log("!!!!!!!!req.params.body.comment is!!");
             console.log(req.body.comment);
             // console.log("!!!!!!!!req.params.body.comment is!!");
+            //create new Comment
             Comment.create(req.body.comment, function(err, comment) {
                 if(err) {
                     console.log(err);
                 } else {
+                    //connect comment to campground
                     campground.comments.push(comment._id);
                     campground.save();
                     res.redirect("/campgrounds/" + campground._id);
