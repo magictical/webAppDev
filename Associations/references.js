@@ -23,10 +23,34 @@ var userSchema = new mongoose.Schema({
 
 var User = mongoose.model("User", userSchema);
 
-User.create({
-    email: "law@gmail.com",
-    name: "Mashial Law"
+Post.create({
+    title: "law.com",
+    content: "content is here~~ Law"
+}, function(err, post) {
+        User.findOne({email: "law@gmail.com"}, function(err, foundUser) {
+        if(err) {
+            console.log(err)
+       } else {
+           console.log("found the user " + foundUser)
+            foundUser.posts.push(post);
+            foundUser.save(function(err, data) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log(data);
+                }
+            });
+        }
+    });    
+    
 });
+
+
+// User.create({
+//     email: "law@gmail.com",
+//     name: "Mashial Law"
+// });
+
 
 
 
