@@ -14,25 +14,12 @@ app.set("view engine", "ejs");
 //delete all campground! and create new one
 seedDB();
 
-
-
-// Campground.create(
-//     {name: "Nawansa", 
-//     image: "https://farm7.staticflickr.com/6009/6189111529_5b70b82033.jpg",
-//     description: "might be a good place to rest!"
-//     }, function(error, campground) {
-//         if(error) {
-//             console.log(error);
-//         } else {
-//             console.log("Add campground!");
-//             console.log(campground);
-//         }
-//     });
-
+//Root route
 app.get("/", function(req, res) {
     res.render("landing");
-})
+});
 
+//INDEX route
 app.get("/campgrounds", function(req, res) {
     // send object to campgrounds.ejs template
     // res.render("campgrounds", {campgrounds:campgrounds});
@@ -45,11 +32,11 @@ app.get("/campgrounds", function(req, res) {
             // allCampgrounds is a data from DB!
             res.render("index", {campgrounds:allCampgrounds});
         }
-    })
+    });
     
-})
+});
 
-// add POST route
+//POST route
 app.post("/campgrounds", function(req, res) {
     //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
@@ -68,29 +55,31 @@ app.post("/campgrounds", function(req, res) {
             //move to /campgrounds
             res.redirect("/campgrounds");
         }
-    })
-})
+    });
+});
 
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
 app.get("/campgrounds/new", function(req, res) {
     res.render("new");
 }) 
 
-//SHOW - shows more info about one campground
+//SHOW route- shows more info about one campground
 //becaful with order of the routes! small rout have to be first! 
 //like campground/new, is first than campgrounds/:id
 app.get("/campgrounds/:id", function(req, res) {
     //find the campground with provided ID
-    Campground.findById(req.params.id, function(error, foundCampground) {
+    Campground.findById(req.params.id).populate("comments").exec(function(error, foundCampground) {
         if(error) {
             console.log(error);
         } else {
+            console.log(foundCampground);
             //render show template with that campground
             res.render("show", {campground: foundCampground});        
         }
-    })
-    
-})
+    });
+});
+
+
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
-})
+});
