@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
+var Comment = require("./models/comment");
 
 //define dummy array
 var data =[
@@ -20,24 +21,47 @@ var data =[
     }
 ]
 
-function seedDB() {
-    Campground.remove({}, function(err) {
-        if(err) {
+//delete previous data and create new one
+function seedDB(){
+   //Remove all campgrounds
+   Campground.remove({}, function(err){
+        if(err){
             console.log(err);
-        } else {
-            console.log("campground has removed!!");
         }
-        data.forEach(function(seed) {
-            Campground.create(seed, function(err, data) {
-                if(err) {
-                    console.log(err);
-                } else {
-                    console.log(data);
-                }
+        console.log("removed campgrounds!");
+        Comment.remove({}, function(err) {
+            if(err){
+                console.log(err);
+            }
+            console.log("removed comments!");
+             //add a few campgrounds
+            data.forEach(function(seed){
+                Campground.create(seed, function(err, campground){
+                    if(err){
+                        console.log(err)
+                    } else {
+                        console.log("added a campground");
+                        //create a comment
+                        Comment.create(
+                            {
+                                text: "This place is great, but I wish there was internet",
+                                author: "Homer"
+                            }, function(err, comment){
+                                if(err){
+                                    console.log(err);
+                                } else {
+                                    campground.comments.push(comment._id);
+                                    campground.save();
+                                    console.log("Created new comment");
+                                }
+                            });
+                    }
+                });
             });
         });
-    });
-}    
+    }); 
+    //add a few comments
+}
 
 module.exports = seedDB;
 

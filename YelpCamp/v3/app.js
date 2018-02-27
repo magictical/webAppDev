@@ -5,14 +5,14 @@ var express    = require("express"),
     mongoose   = require("mongoose"),
     Campground = require("./models/campground"),
     seedDB      = require("./seeds");
-    
-//delete all campground!
-seedDB();
 
 mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+
+//delete all campground! and create new one
+seedDB();
 
 
 
