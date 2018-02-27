@@ -9,7 +9,7 @@ var postSchema = new mongoose.Schema({
 });
 var Post = mongoose.model("Post", postSchema);
 
-//User - email, name
+//User - email, name, posts //1-N(posts) relationship
 var userSchema = new mongoose.Schema({
     email: String,
     name : String,
@@ -19,9 +19,16 @@ var User = mongoose.model("User", userSchema);
 
 
 var newUser = new User({
-    email: "charie@as.com",
-    name: "charie"
+    email: "Ian@hot.com",
+    name: "Ian"
 });
+
+// //add Post to user
+// newUser.posts.push({
+//     title: "embed Post to User",
+//     content: "do your things!"
+// })
+
 
 // //Add user to DB
 // newUser.save(function(err, user) {
@@ -32,17 +39,25 @@ var newUser = new User({
 //     }
 // })
 
-var newPost = new Post({
-    title: "my first post",
-    content: "writing a post is so fun"
-});
-//Add post to DB
-newPost.save(function(err, post) {
+// var newPost = new Post({
+//     title: "my first post",
+//     content: "writing a post is so fun"
+// });
+// //Add post to DB
+// newPost.save(function(err, post) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log(post);
+//     }
+// });
+
+User.findOne({name: "Ian"}, function(err, user) {
     if(err) {
         console.log(err);
     } else {
-        console.log(post);
+        console.log(user);
     }
 });
 
-//1-N relationship
+
