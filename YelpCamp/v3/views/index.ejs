@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div>
+            <h1>Welcome to YelpCamp</h1>
+            <p>View our Amazing campgrounds!!</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/">Move to Home</a>
+            </p>
+        </div>
+    </header>
+    
+    <!--row를 사용해서 thumbnail 정렬하기, 정렬 스타일style row에 적용하기-->
+    <div class="row" style="display:flex; flex-wrap:wrap;">
+        <% campgrounds.forEach(function(campground) { %>
+        <div class="col-md-3 col-sm-6">
+            <!--align the images-->
+            <div class="thumbnail">
+                <image src="<%= campground.image %>">
+                <!--add space for caption-->
+                <div class="caption">
+                    <h4><strong><%= campground.name %></strong></h4>    
+                    <p>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+        
+    </div>
+    <a href="/">Move to Home</a>
+</div>
+<% include partials/footer %>
