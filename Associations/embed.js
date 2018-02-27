@@ -52,11 +52,24 @@ var newUser = new User({
 //     }
 // });
 
+//find Ian and add Post to User Ian
 User.findOne({name: "Ian"}, function(err, user) {
     if(err) {
         console.log(err);
     } else {
-        console.log(user);
+        // add Post to User  'posts' 는  DB내 Post의 collection 이름
+        user.posts.push({
+            title: "New push",
+            content: "insult Post to User OMG!!"
+        })
+        //save User to Db
+        user.save(function (err, user) {
+            if(err) {
+                console.log(err)
+            } else {
+                console.log(user);
+            }
+        })
     }
 });
 
