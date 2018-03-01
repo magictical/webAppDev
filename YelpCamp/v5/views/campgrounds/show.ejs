@@ -20,25 +20,27 @@
                     <h4 class="pull-right">$9.00/night</h4>
                     <h4><a><h1><%= campground.name %></h1></a></h4>
                     <p><%= campground.description %></p>
-                    
                 </div>
+            </div>
+            <!--well: element에 회색추가 component: wells로 검색-->
+            <div class="well">
+                <div class="text-right">
+                   <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add a Comment</a>        
+                </div>
+                <hr>
+                <% campground.comments.forEach(function(comment) { %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author %> </strong>
+                            <span class="pull-right"> 10 days ago</span>
+                            <p>
+                                <%= comment.text %> 
+                            </p>
+                        </div>
+                    </div>
+                <% }) %>   
             </div>
         </div>
     </div>
 </div>
-
-
-    
-    
-    
-    
-    <p>
-        <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add a Comment</a>
-    </p>
-    <% campground.comments.forEach(function(comment) { %>
-        <p>
-            <strong><%= comment.author %> </strong> - <%= comment.text %> 
-        </p>
-    <% }) %>    
-
 <% include ../partials/footer %>
