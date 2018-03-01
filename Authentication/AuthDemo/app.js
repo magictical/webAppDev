@@ -1,5 +1,8 @@
 var express =require("express");
 
+// setting for mongoose 'auth_demo_app' is db name for mongodb
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/auth_demo_app");
 var app = express();
 
 app.set('view engine', 'ejs');
