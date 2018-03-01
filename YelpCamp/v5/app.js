@@ -4,13 +4,16 @@ var express    = require("express"),
     bodyParser = require("body-parser"),
     mongoose   = require("mongoose"),
     Campground = require("./models/campground"),
-    Comment   = require("./models/comment"),
-    seedDB      = require("./seeds");
+    Comment    = require("./models/comment"),
+    seedDB     = require("./seeds");
     
 mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
 app.use(bodyParser.urlencoded({extended: true}));
+// __dirname은 현재 위치 정도라고 보면된다 console로보면 /home/ubontu/workspace/YelpCamp/v5 
+app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
+
 
 //delete all campground! and create new one
 seedDB();
