@@ -15,9 +15,9 @@
 * Add root route and template
 * Add secret route and template
 
-<!--#Auth CodeAlong Part 2-->
-<!--* Create User model-->
-<!--* Configure passport-->
+#Auth CodeAlong Part 2
+* Create User model
+* Configure passport
 
 <!--#Auth CodeAlong Part 3-->
 <!--* Add Register routes-->
