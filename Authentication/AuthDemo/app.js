@@ -1,9 +1,9 @@
 var express               = require("express"),
     passport              = require("passport"),
     bodyParser            = require("body-parser"),
-    localStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     mongoose              = require("mongoose"),
+    LocalStrategy         = require("passport-local"),
     User                  = require("./models/user");
 
 var app = express();    
@@ -18,6 +18,8 @@ app.use(require("express-session")({
     saveUninitialized: false
 }));
 
+//setting for localStrategy(passport-local)  .authenticate function is coming from User's passportLocalMongoose
+passport.use(new LocalStrategy(User.authenticate()));
 //setting for passport 
 app.use(passport.initialize());
 app.use(passport.session());
