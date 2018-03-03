@@ -91,7 +91,7 @@ app.post("/login", passport.authenticate("local", {
 app.get("/logout", function(req, res) {
     //when logout() has started all auth data will be destroyed
     req.logout();
-    res.redirect("home");
+    res.redirect("/");
 })
 
 
