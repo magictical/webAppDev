@@ -21,6 +21,8 @@ app.use(require("express-session")({
 //setting for passport 
 app.use(passport.initialize());
 app.use(passport.session());
+//setting for body-parser to encode the username,password from register.ejs' form
+app.use(bodyParser.urlencoded({extended: true}));
 
 //serializeUser - Encoding 과정User.js 의 passportLocalMongoose의 function이 실행됨
 passport.serializeUser(User.serializeUser());
@@ -39,7 +41,22 @@ app.get("/register", function(req, res) {
 
 //handling user sign up
 app.post("/register", function(req, res) {
-    res.send("Got the Post!");
+    //get username, password from POST method
+    //these are came from name attribute in form placed in register.ejs
+    req.body.username;
+    req.body.password;
+    //new User로 새로운 User obj를 만들고 username을 포함시킴 이 obj는 DB에 저장될 부분
+    //하지만 password는 직접적으로 DB에 저장하지 않고 따로 떨어뜨려 놓음
+    User.register(new User({username:  req.body.username}), req.body.password, function(err,user){
+        if(err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function() {
+            //로그인후 이동할 곳
+            res.redirect("/secret");
+        })
+    })
 })
 
 
