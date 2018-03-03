@@ -41,8 +41,9 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", function(req, res) {
     res.render("home");
 });
-
-app.get("/secret", function (req, res) {
+//use middleware(isLoggedIn()) this will check User is login or not also 
+//if true it will excute next() which call the function next to itself
+app.get("/secret", isLoggedIn, function (req, res) {
    res.render("secret") ;
 });
 
@@ -77,6 +78,12 @@ app.post("/register", function(req, res) {
     })
 })
 
+//LOGIN ROUTES
+//render login form
+app.get("/login", function(req, res){
+  res.render("login");
+})
+
 //login logic 
 //middleware - passport.authenticate ~
 //middleware는 "/login" post바로 뒤에 실행되고 function앞에 끝나게된다.
@@ -94,14 +101,15 @@ app.get("/logout", function(req, res) {
     res.redirect("/");
 })
 
-
-//LOGIN ROUTES
-//render login form
-app.get("/login", function(req, res){
-  res.render("login")  ;
-})
-
+//User의 login logout 을 체크하는 middleware next 파라메터가 미들 웨어 다음의 
+//function을 호출한다.
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has stated!!");
-})
+});
