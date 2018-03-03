@@ -47,6 +47,9 @@ app.post("/register", function(req, res) {
     req.body.password;
     //new User로 새로운 User obj를 만들고 username을 포함시킴 이 obj는 DB에 저장될 부분
     //하지만 password는 직접적으로 DB에 저장하지 않고 따로 떨어뜨려 놓음
+    //DB를 살펴보면 username만 저장되어있고 password없이 salt, hash값만 있다 salt는 hash값을 
+    //decoding, encoding해서 비밀번호를 찾기위한 힌트로 사용된다. 이때 salt, hash값은 User.js의 
+    //passportLocalMongoose을 이용한 결과다.
     User.register(new User({username:  req.body.username}), req.body.password, function(err,user){
         if(err) {
             console.log(err);
