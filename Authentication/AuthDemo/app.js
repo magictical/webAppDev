@@ -87,6 +87,13 @@ app.post("/login", passport.authenticate("local", {
 }), function(req, res) {
 });
 
+//logout logic
+app.get("/logout", function(req, res) {
+    //when logout() has started all auth data will be destroyed
+    req.logout();
+    res.redirect("home");
+})
+
 
 //LOGIN ROUTES
 //render login form
