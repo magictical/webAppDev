@@ -75,6 +75,16 @@ app.post("/register", function(req, res) {
     })
 })
 
+//login logic 
+//middleware - passport.authenticate ~
+//middleware는 "/login" post바로 뒤에 실행되고 function앞에 끝나게된다.
+//passport는 user의 hash값을 비교해서 비밀번호를 확인하고 login할지 false할지 결정한다.
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/secret",
+    failureRedirect: "/login"
+}), function(req, res) {
+});
+
 
 //LOGIN ROUTES
 //render login form
