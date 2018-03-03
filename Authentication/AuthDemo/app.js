@@ -6,10 +6,21 @@ var express               = require("express"),
     mongoose              = require("mongoose"),
     User                  = require("./models/user");
 
-var app = express()    
+var app = express();    
 // setting for mongoose 'auth_demo_app' is db name for mongodb
 mongoose.connect("mongodb://localhost/auth_demo_app");
 app.set('view engine', 'ejs');
+
+//setting for express-session
+app.use(require("express-session")({
+    secret: "the person i've been thinking of is",
+    resave: false;
+    saveUninitialized: false;
+}));
+
+//setting for passport 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", function(req, res) {
     res.render("home");
