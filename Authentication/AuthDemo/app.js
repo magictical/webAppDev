@@ -14,8 +14,8 @@ app.set('view engine', 'ejs');
 //setting for express-session
 app.use(require("express-session")({
     secret: "the person i've been thinking of is",
-    resave: false;
-    saveUninitialized: false;
+    resave: false,
+    saveUninitialized: false
 }));
 
 //setting for passport 
