@@ -34,6 +34,19 @@ passport.deserializeUser(User.deserializeUser());
 //Auth ROUTES
 //==============
 
+
+
+app.get("/", function(req, res) {
+    res.render("home");
+});
+
+app.get("/secret", function (req, res) {
+   res.render("secret") ;
+});
+
+
+////Auth Routes/////
+
 //show sign up form
 app.get("/register", function(req, res) {
     res.render("register");
@@ -63,13 +76,12 @@ app.post("/register", function(req, res) {
 })
 
 
-app.get("/", function(req, res) {
-    res.render("home");
-});
+//LOGIN ROUTES
+//render login form
+app.get("/login", function(req, res){
+  res.render("login")  ;
+})
 
-app.get("/secret", function (req, res) {
-   res.render("secret") ;
-});
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has stated!!");
