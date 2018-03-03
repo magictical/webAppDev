@@ -22,6 +22,11 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//serializeUser - Encoding 과정User.js 의 passportLocalMongoose의 function이 실행됨
+passport.serializeUser(User.serializeUser());
+//동일함 Decoding과정
+passport.deserializeUser(User.deserializeUser());
+
 app.get("/", function(req, res) {
     res.render("home");
 });
