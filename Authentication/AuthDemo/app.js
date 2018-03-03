@@ -27,6 +27,17 @@ passport.serializeUser(User.serializeUser());
 //동일함 Decoding과정
 passport.deserializeUser(User.deserializeUser());
 
+
+//==============
+//Auth ROUTES
+//==============
+
+//show sign up form
+app.get("/register", function(req, res) {
+    res.render("register");
+})
+
+
 app.get("/", function(req, res) {
     res.render("home");
 });
