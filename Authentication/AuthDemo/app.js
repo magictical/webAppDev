@@ -3,7 +3,8 @@ var express               = require("express"),
     bodyParser            = require("body-parser"),
     localStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
-    mongoose              = require("mongoose");
+    mongoose              = require("mongoose"),
+    User                  = require("./models/user");
 
 var app = express()    
 // setting for mongoose 'auth_demo_app' is db name for mongodb
