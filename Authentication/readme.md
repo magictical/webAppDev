@@ -19,9 +19,9 @@
 * Create User model
 * Configure passport
 
-<!--#Auth CodeAlong Part 3-->
-<!--* Add Register routes-->
-<!--* Add Register form-->
+#Auth CodeAlong Part 3
+* Add Register routes
+* Add Register form
 
 <!--#Auth CodeAlong Part 4-->
 <!--* Add Login routes-->
