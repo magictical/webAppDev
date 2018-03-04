@@ -19,7 +19,8 @@ var express    = require("express"),
 app.use(require("express-session")({
     secret: "it's time to move on now!",
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false
+    
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -152,6 +153,16 @@ app.post("/campgrounds/:id/comments", function(req, res) {
         }
     })
 })
+
+//================
+// AUTH ROUTES ===
+//================
+
+//show the register form
+app.get("/register", function(req, res) {
+    res.render("register");
+})
+
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
