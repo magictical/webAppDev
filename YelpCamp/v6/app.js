@@ -5,7 +5,15 @@ var express    = require("express"),
     mongoose   = require("mongoose"),
     Campground = require("./models/campground"),
     Comment    = require("./models/comment"),
+    
+    //auth APIs
+    passport   = require("passport"),
+    LocalStrategy = require("passport-local"),
+    User = require("./models/user"),
+    
     seedDB     = require("./seeds");
+    
+    
     
 mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
