@@ -14,6 +14,22 @@ var express    = require("express"),
     seedDB     = require("./seeds");
     
     
+
+// PASSPORT CONFIGURATION
+app.use(require("express-session")({
+    secret: "it's time to move on now!",
+    resave: false,
+    saveUnitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+//use pasport-local
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+// PASSPORT CONFIGURATION
+    
     
 mongoose.connect("mongodb://localhost/yelp_camp");
 // body-parser setup
