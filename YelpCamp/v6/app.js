@@ -163,6 +163,21 @@ app.get("/register", function(req, res) {
     res.render("register");
 })
 
+//handle sign up logic
+app.post("/register", function(req, res) {
+    var newUser = new User({username:req.body.username});
+    User.register(newUser, req.body.password, function(err, user) {
+      //에러발생시 /register로 이동
+      if(err) {
+          console.log(err);
+          return res.redirect("/register");
+      }
+      //이상없으면 auth 완료하고 /campground로이동
+      passport.authenticate("local")(req, res, function() {
+          res.redirect("/campgrounds")
+      });
+    });
+});
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
