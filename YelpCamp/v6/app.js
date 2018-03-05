@@ -13,9 +13,12 @@ var express    = require("express"),
     
     seedDB     = require("./seeds");
     
-//var for router
-var campgroundRoutes = require("./routes/campgrounds");
-//add auth, comments also
+//var for router -//campgrounds, index(auth), comments also
+var campgroundRoutes = require("./routes/campgrounds"),
+    indexRountes     = require("./routes/index"),
+    commentRoutes    = require("./routes/comments");
+
+
     
     
 
@@ -56,6 +59,9 @@ seedDB();
 
 //use each route - ./routes/campgrounds, index, comments
 app.use(campgroundRoutes);
+app.use(commentRoutes);
+app.use(indexRountes);
+
 
 
 app.listen(process.env.PORT, process.env.IP, function() {
