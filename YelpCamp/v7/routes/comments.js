@@ -1,8 +1,13 @@
+var express = require("express");
+var router  = express.Router();
+var Campground = require("../models/campground");
+var Comment = require("../models/comment");
+
 // ===================================
 // COMMENTS ROUTES //=================
 // ===================================
 //use middleware - isLogedIn to check user login state
-app.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
+router.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
     //find campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -11,11 +16,11 @@ app.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
             //NEW가 campground NEW와 중복되므로 폴더로 따로 만든다 - "comments/ 에 생성"    
             res.render("comments/new", {campground: campground});        
         }
-    })
+    });
     
 });
 //use middleware - isLogedIn to check user login state
-app.post("/campgrounds/:id/comments", isLogedIn, function(req, res) {
+router.post("/campgrounds/:id/comments", isLogedIn, function(req, res) {
     //lookup campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -35,7 +40,15 @@ app.post("/campgrounds/:id/comments", isLogedIn, function(req, res) {
                     campground.save();
                     res.redirect("/campgrounds/" + campground._id);
                 }
-            })
+            });
         }
-    })
-})
+    });
+});
+
+//define middleware
+function isLogedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}

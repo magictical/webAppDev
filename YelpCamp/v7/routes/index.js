@@ -1,5 +1,10 @@
+var express  = require("express");
+var router   = express.Router();
+var User     = require("../models/user");
+var passport = require("passport");
+
 //Root route
-app.get("/", function(req, res) {
+router.get("/", function(req, res) {
     res.render("landing");
 });
 
@@ -10,12 +15,12 @@ app.get("/", function(req, res) {
 //================
 
 //show the register form
-app.get("/register", function(req, res) {
+router.get("/register", function(req, res) {
     res.render("register");
 })
 
 //handle sign up logic
-app.post("/register", function(req, res) {
+router.post("/register", function(req, res) {
     var newUser = new User({username:req.body.username});
     User.register(newUser, req.body.password, function(err, user) {
       //에러발생시 /register로 이동
@@ -31,12 +36,12 @@ app.post("/register", function(req, res) {
 });
 
 // show login form
-app.get("/login", function(req, res) {
+router.get("/login", function(req, res) {
     res.render("login");
 });
 
 //handling the login form - use middleware (passport.authenticate)
-app.post("/login", passport.authenticate("local",
+router.post("/login", passport.authenticate("local",
     {
         successRedirect: "/campgrounds",
         failureRedirect: "/login"
@@ -45,7 +50,7 @@ app.post("/login", passport.authenticate("local",
 });
 
 //log logout
-app.get("/logout", function(req,res) {
+router.get("/logout", function(req,res) {
     req.logout();
     res.redirect("/campgrounds");
 });
@@ -58,3 +63,5 @@ function isLogedIn(req, res, next) {
     }
     res.redirect("/login");
 }
+
+module.exports = router;
