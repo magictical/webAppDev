@@ -9,7 +9,7 @@ router.get("/", function(req, res) {
 });
 
 
-
+// PASSPORT CONFIGURATION
 //================
 // AUTH ROUTES ===
 //================
