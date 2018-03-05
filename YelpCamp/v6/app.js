@@ -39,6 +39,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
+// definde middleware for currentUser state
+// app 전체에서 user state를 추적할 수 있게됨
+app.use(function(req, res, next) {
+  currentUser = req.user;
+  next();
+});
+
 
 //delete all campground! and create new one
 seedDB();
@@ -58,7 +65,9 @@ app.get("/campgrounds", function(req, res) {
         if(error) {
             console.log(error)
         } else {
+            console.log(req.user);
             // allCampgrounds is a data from DB!
+            // send currentUser state
             res.render("campgrounds/index", {campgrounds:allCampgrounds});
         }
     });
