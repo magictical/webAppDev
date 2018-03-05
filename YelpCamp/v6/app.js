@@ -115,8 +115,8 @@ app.get("/campgrounds/:id", function(req, res) {
 // ===================================
 // COMMENTS ROUTES //=================
 // ===================================
-
-app.get("/campgrounds/:id/comments/new", function(req, res) {
+//use middleware - isLogedIn to check user login state
+app.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
     //find campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -128,8 +128,8 @@ app.get("/campgrounds/:id/comments/new", function(req, res) {
     })
     
 });
-
-app.post("/campgrounds/:id/comments", function(req, res) {
+//use middleware - isLogedIn to check user login state
+app.post("/campgrounds/:id/comments", isLogedIn, function(req, res) {
     //lookup campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -199,6 +199,14 @@ app.get("/logout", function(req,res) {
     res.redirect("/campgrounds");
 })
 
+
+//define middleware
+function isLogedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started!!!");
