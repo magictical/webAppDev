@@ -1,13 +1,11 @@
 var express = require("express");
-var router  = express.Router();
+var router  = express.Router();  // Param을 못가져올때는 Router({mergeParams: true)를 추가해준다
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 
-// ===================================
-// COMMENTS ROUTES //=================
-// ===================================
+//Comments NEW
 //use middleware - isLogedIn to check user login state
-router.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
+router.get("/new", isLogedIn, function(req, res) {
     //find campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -19,8 +17,10 @@ router.get("/campgrounds/:id/comments/new", isLogedIn, function(req, res) {
     });
     
 });
+
+//Comments Create
 //use middleware - isLogedIn to check user login state
-router.post("/campgrounds/:id/comments", isLogedIn, function(req, res) {
+router.post("/", isLogedIn, function(req, res) {
     //lookup campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {

@@ -12,7 +12,7 @@ var express    = require("express"),
     seedDB     = require("./seeds");
     
     
-//var for router -//campgrounds, index(auth), comments also
+//var for routes -//campgrounds, index(auth), comments also
 var campgroundRoutes = require("./routes/campgrounds"),
     indexRountes     = require("./routes/index"),
     commentRoutes    = require("./routes/comments");
@@ -53,9 +53,9 @@ app.use(function(req, res, next) {
 
 
 //use each route - ./routes/campgrounds, index, comments
-app.use(campgroundRoutes);
-app.use(commentRoutes);
-app.use(indexRountes);
+app.use("/", indexRountes);
+app.use("/campgrounds",campgroundRoutes);
+app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function() {

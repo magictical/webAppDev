@@ -3,7 +3,7 @@ var router     = express.Router();
 var Campground = require("../models/campground");
 
 //INDEX route
-router.get("/campgrounds", function(req, res) {
+router.get("/", function(req, res) {
     // send object to campgrounds.ejs template
     // res.render("campgrounds", {campgrounds:campgrounds});
     
@@ -22,7 +22,7 @@ router.get("/campgrounds", function(req, res) {
 });
 
 //POST route
-router.post("/campgrounds", function(req, res) {
+router.post("/", function(req, res) {
     //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
     var imgUrl = req.body.image;
@@ -44,14 +44,14 @@ router.post("/campgrounds", function(req, res) {
 });
 
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
-router.get("/campgrounds/new", function(req, res) {
+router.get("/new", function(req, res) {
     res.render("campgrounds/new");
 });
 
 //SHOW route- shows more info about one campground
 //becaful with order of the routes! small rout have to be first! 
 //like campground/new, is first than campgrounds/:id
-router.get("/campgrounds/:id", function(req, res) {
+router.get("/:id", function(req, res) {
     //find the campground with provided ID
     Campground.findById(req.params.id).populate("comments").exec(function(error, foundCampground) {
         if(error) {
