@@ -1,5 +1,5 @@
 var express = require("express");
-var router  = express.Router();  // Param을 못가져올때는 Router({mergeParams: true)를 추가해준다
+var router  = express.Router({mergeParams: true});  // Param을 못가져올때는 Router({mergeParams: true})를 추가해준다
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 
@@ -7,6 +7,7 @@ var Comment = require("../models/comment");
 //use middleware - isLogedIn to check user login state
 router.get("/new", isLogedIn, function(req, res) {
     //find campground by id
+    console.log(req.params.id);
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
             console.log(err);
