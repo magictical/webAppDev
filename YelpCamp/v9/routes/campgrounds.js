@@ -3,7 +3,7 @@ var router     = express.Router();
 var Campground = require("../models/campground");
 
 //INDEX route
-router.get("/", function(req, res) {
+router.get("/", isLogedIn, function(req, res) {
     // send object to campgrounds.ejs template
     // res.render("campgrounds", {campgrounds:campgrounds});
     
@@ -44,7 +44,7 @@ router.post("/", function(req, res) {
 });
 
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
-router.get("/new", function(req, res) {
+router.get("/new", isLogedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 
