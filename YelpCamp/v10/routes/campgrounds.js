@@ -70,6 +70,14 @@ router.get("/:id", function(req, res) {
     });
 });
 
+//EDIT CAMPGROUND ROUTE
+router.get("/:id/edit", function(req, res) {
+    res.render("campgrounds/edit");
+})
+
+
+//UPDATE CAMPGROUND ROUTE
+
 //define middleware
 function isLogedIn(req, res, next) {
     if(req.isAuthenticated()) {
