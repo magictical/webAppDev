@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
         if(error) {
             console.log(error)
         } else {
-            console.log(req.user);
+            // console.log(req.user);
             // allCampgrounds is a data from DB!
             // send currentUser state
             res.render("campgrounds/index", {campgrounds:allCampgrounds});
@@ -58,7 +58,7 @@ router.get("/:id", function(req, res) {
             console.log(error);
         } else {
             // console.log("!!!!!!!!found camp!!");
-            console.log(foundCampground);
+            // console.log(foundCampground);
             // console.log("!!!!!!!!found camp!!");
             //render show template with that campground
             res.render("campgrounds/show", {campground: foundCampground});        
@@ -67,4 +67,4 @@ router.get("/:id", function(req, res) {
 });
 
 //exports router
-module.exports = router();
+module.exports = router;

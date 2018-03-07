@@ -28,17 +28,19 @@ router.post("/", isLogedIn, function(req, res) {
             console.log(err);
             res.redirect("/campgrounds")
         } else {
-            // console.log("!!!!!!!!req.params.body.comment is!!");
+            console.log("!!!!!!!!req.params.body.comment is!!");
             console.log(req.body.comment);
-            // console.log("!!!!!!!!req.params.body.comment is!!");
+            console.log("!!!!!!!!req.params.body.comment is!!");
             //create new Comment
             Comment.create(req.body.comment, function(err, comment) {
                 if(err) {
                     console.log(err);
                 } else {
-                    //connect comment to campground
+                    //print out user name 
+                    //save comment to campground
                     campground.comments.push(comment._id);
                     campground.save();
+                    console.log("User name is:" + req.user._id);
                     res.redirect("/campgrounds/" + campground._id);
                 }
             });
