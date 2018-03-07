@@ -5,7 +5,7 @@ var commentSchema = mongoose.Schema({
     author: {
         //save User data
         id: {
-            type: mongoose.Schema.Type.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
         username: String

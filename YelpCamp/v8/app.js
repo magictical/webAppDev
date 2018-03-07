@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 
 
 //delete all campground! and create new one
-seedDB();
+// seedDB();
 
 //Root route
 app.get("/", function(req, res) {
