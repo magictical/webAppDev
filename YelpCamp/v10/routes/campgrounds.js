@@ -72,11 +72,18 @@ router.get("/:id", function(req, res) {
 
 //EDIT CAMPGROUND ROUTE
 router.get("/:id/edit", function(req, res) {
-    res.render("campgrounds/edit");
+    Campground.findById(req.params.id, function(err, foundCampground) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("campgrounds/edit", {campground: foundCampground});
+        }
+    })
+    
 })
 
-
 //UPDATE CAMPGROUND ROUTE
+
 
 //define middleware
 function isLogedIn(req, res, next) {
