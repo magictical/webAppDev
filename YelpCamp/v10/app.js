@@ -5,6 +5,8 @@ var express    = require("express"),
     mongoose   = require("mongoose"),
     Campground = require("./models/campground"),
     Comment    = require("./models/comment"),
+    //use method-override
+    methodOverride = require("method-override"),
     
     //auth APIs
     passport   = require("passport"),
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 // __dirname은 현재 위치 정도라고 보면된다 console로보면 /home/ubontu/workspace/YelpCamp/v5 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+//setting for method-override
+app.use(methodOverride("_method"));
 
 
 // PASSPORT CONFIGURATION
