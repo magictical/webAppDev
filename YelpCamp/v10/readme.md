@@ -79,6 +79,14 @@ Each Campground has:
 *Save username+id to newly created campground
 
 
+v10===========================================================
+# Editing Campgrounds
+* Add Method-Override
+* Add Edit Route for Campgrounds
+* Add Link to Edit Page
+* Add Update Route
+
+
 RESTFUL ROUTES
 
 name      url      verb    desc.
