@@ -4,17 +4,18 @@
     <!--width : resize the name, imageUrl At <input>-->
     <div style="width: 30%; margin:30px auto;">
         <!--get campgrounds._id and send PUT-->
-        <form action="/campgrounds/<%= campground._id %>/edit?_method=PUT" method="POST">
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
             <!--add class name : form-group & add space btw elements -->
             <div class="form-group">
                 <!--form-control : use bootstrap conponent-->
-                <input class="form-control" type="text" name="name" value="<%= campground.name %>">    
+                <!--campground[]을 사용하면 action으로 campground로 묶어서 ojb처럼 보낼수있다. 보낸값을req.body.campground로 사용!-->
+                <input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">    
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" name="image" value="<%= campground.image %>">
+                <input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>">
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" name="description" value="<%= campground.description %>">
+                <input class="form-control" type="text" name="campground[description]" value="<%= campground.description %>">
             </div>
             <div class="form-group">
                 <!--btn-primary:btnColor, btn-blick:btn size-->
