@@ -50,7 +50,7 @@ passport.deserializeUser(User.deserializeUser());
 // definde middleware for currentUser state
 // app 전체에서 user state를 추적할 수 있게됨
 app.use(function(req, res, next) {
-  currentUser = req.user;
+  res.locals.currentUser = req.user;
   next();
 });
 

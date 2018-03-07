@@ -112,6 +112,7 @@ function isLogedIn(req, res, next) {
 
 //check authorization
 function checkCampgroundOwnership(req, res, next) {
+    //check logged in?
     if(req.isAuthenticated()) {
         Campground.findById(req.params.id, function(err, foundCampground) {
             if(err) {
