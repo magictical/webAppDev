@@ -27,16 +27,20 @@ router.post("/", function(req, res) {
     var name = req.body.name;
     var imgUrl = req.body.image;
     var desc = req.body.description;
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
     //save input to obj
-    var newCampground = {name:name, image:imgUrl, description: desc};
+    var newCampground = {name:name, image:imgUrl, description: desc, author: author};
     //create Campground obj and save to DB
-    Campground.create(newCampground, function(error, newCampground) {
+    Campground.create(newCampground, function(error, newlyCreated) {
         if(error) {
             console.log(error);
         } else {
             //shows the added campground
             console.log("campground has added!!");
-            console.log(newCampground);
+            console.log("new Post!" + newlyCreated)
             //move to /campgrounds
             res.redirect("/campgrounds");
         }
