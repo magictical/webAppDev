@@ -37,10 +37,10 @@ router.post("/", isLogedIn, function(req, res) {
                     console.log(err);
                 } else {
                     //print out user name 
-                    //save comment to campground
+                    //save comment to 
+                    console.log("this is the name of user :" + req.user.username);
                     campground.comments.push(comment._id);
                     campground.save();
-                    console.log("User name is:" + req.user._id);
                     res.redirect("/campgrounds/" + campground._id);
                 }
             });
