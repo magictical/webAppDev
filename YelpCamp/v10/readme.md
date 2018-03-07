@@ -86,6 +86,11 @@ v10===========================================================
 * Add Link to Edit Page
 * Add Update Route
 
+# Part 2 Authorization ==================================
+* User can only edit his/her campground
+* user can only delete his/her campground
+* Hide/show edit and delete buttons
+
 
 RESTFUL ROUTES
 
