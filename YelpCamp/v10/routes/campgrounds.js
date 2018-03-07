@@ -2,7 +2,7 @@ var express    = require("express");
 var router     = express.Router();
 var Campground = require("../models/campground");
 
-//INDEX route
+// INDEX route
 router.get("/", isLogedIn, function(req, res) {
     // send object to campgrounds.ejs template
     // res.render("campgrounds", {campgrounds:campgrounds});
@@ -21,7 +21,7 @@ router.get("/", isLogedIn, function(req, res) {
     
 });
 
-//POST route
+// POST route
 router.post("/", function(req, res) {
     //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
@@ -52,7 +52,7 @@ router.get("/new", isLogedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 
-//SHOW route- shows more info about one campground
+// SHOW route- shows more info about one campground
 //becaful with order of the routes! small rout have to be first! 
 //like campground/new, is first than campgrounds/:id
 router.get("/:id", function(req, res) {
@@ -70,7 +70,7 @@ router.get("/:id", function(req, res) {
     });
 });
 
-//EDIT CAMPGROUND ROUTE
+// EDIT CAMPGROUND ROUTE
 router.get("/:id/edit", function(req, res) {
     Campground.findById(req.params.id, function(err, foundCampground) {
         if(err) {
@@ -82,9 +82,8 @@ router.get("/:id/edit", function(req, res) {
     
 })
 
-//UPDATE CAMPGROUND ROUTE
+// UPDATE CAMPGROUND ROUTE
 router.put("/:id", function(req, res) {
-    
     //find and update the correct campground
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) {
       if(err) {
@@ -96,6 +95,16 @@ router.put("/:id", function(req, res) {
     });
 })
 
+// DESTROY CAMPGROUND ROUTE
+router.delete("/:id", function(req, res) {
+    Campground.findByIdAndRemove(req.params.id, function(err) {
+        if(err) {
+            res.redirect("/campgrounds");
+        } else {
+            res.redirect("/campgrounds")
+        }
+    });
+})
 //define middleware
 function isLogedIn(req, res, next) {
     if(req.isAuthenticated()) {
