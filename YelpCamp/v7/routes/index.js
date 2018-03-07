@@ -1,7 +1,8 @@
 var express  = require("express");
 var router   = express.Router();
-var User     = require("../models/user");
 var passport = require("passport");
+var User     = require("../models/user");
+
 
 //Root route
 router.get("/", function(req, res) {
@@ -23,15 +24,15 @@ router.get("/register", function(req, res) {
 router.post("/register", function(req, res) {
     var newUser = new User({username:req.body.username});
     User.register(newUser, req.body.password, function(err, user) {
-      //에러발생시 /register로 이동
-      if(err) {
+        //에러발생시 /register로 이동
+        if(err) {
           console.log(err);
           return res.redirect("/register");
-      }
-      //이상없으면 auth 완료하고 /campground로이동
-      passport.authenticate("local")(req, res, function() {
+        }
+        //이상없으면 auth 완료하고 /campground로이동
+        passport.authenticate("local")(req, res, function() {
           res.redirect("/campgrounds")
-      });
+        });
     });
 });
 
