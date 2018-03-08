@@ -1,11 +1,13 @@
 var express = require("express");
 var router  = express.Router({mergeParams: true});  // Param을 못가져올때는 Router({mergeParams: true})를 추가해준다
 var Campground = require("../models/campground");
-var Comment = require("../models/comment");
+var Comment = require("../models/comment")
+//파일명이 index이므로 middleware/index.js까지 지정할 필요가 없다.
+var middlewareObj = require("../middleware");
 
 //Comments NEW
 //use middleware - isLogedIn to check user login state
-router.get("/new", isLogedIn, function(req, res) {
+router.get("/new", middlewareObj.isLogedIn, function(req, res) {
     //find campground by id
     console.log(req.params.id);
     Campground.findById(req.params.id, function(err, campground) {
@@ -21,7 +23,7 @@ router.get("/new", isLogedIn, function(req, res) {
 
 //Comments Create
 //use middleware - isLogedIn to check user login state
-router.post("/", isLogedIn, function(req, res) {
+router.post("/", middlewareObj.isLogedIn, function(req, res) {
     //lookup campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
@@ -53,7 +55,7 @@ router.post("/", isLogedIn, function(req, res) {
 });
 
 // EditCommentRoute
-router.get("/:comment_id/edit", checkCommentOwnership, function(req, res) {
+router.get("/:comment_id/edit", middlewareObj.checkCommentOwnership, function(req, res) {
     Comment.findById(req.params.comment_id, function(err, foundComment) {
         if(err) {
             console.log(err);
@@ -67,7 +69,7 @@ router.get("/:comment_id/edit", checkCommentOwnership, function(req, res) {
 });
 
 // COMMENT UPDATE
-router.put("/:comment_id", checkCommentOwnership, function(req, res) {
+router.put("/:comment_id", middlewareObj.checkCommentOwnership, function(req, res) {
     //find and update the correct campground
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
       if(err) {
@@ -80,7 +82,7 @@ router.put("/:comment_id", checkCommentOwnership, function(req, res) {
 });
 
 // COMMENT DESTROY ROUTE
-router.delete("/:comment_id", checkCommentOwnership, function(req, res) {
+router.delete("/:comment_id", middlewareObj.checkCommentOwnership, function(req, res) {
     //findByIdAndRemove
     Comment.findByIdAndRemove(req.params.comment_id, function(err) {
         if(err) {
@@ -92,38 +94,5 @@ router.delete("/:comment_id", checkCommentOwnership, function(req, res) {
     })
     
 })
-
-
-
-//define middleware
-function isLogedIn(req, res, next) {
-    if(req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
-
-//check authorization
-function checkCommentOwnership(req, res, next) {
-    //check logged in?
-    if(req.isAuthenticated()) {
-        Comment.findById(req.params.comment_id, function(err, foundComment) {
-            if(err) {
-                console.log(err);
-                res.redirect("back");
-            } else {
-                //is user own the campground?
-                console.log(foundComment.author.id)
-                if(foundComment.author.id.equals(req.user._id)) {
-                    next();   
-                } else {
-                    res.redirect("back");            
-                }
-            }
-        });
-    } else {
-        res.redirect("back");
-    }
-}
 
 module.exports = router;
