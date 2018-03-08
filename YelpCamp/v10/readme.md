@@ -95,6 +95,10 @@ v10===========================================================
 * Add Edit route for comments
 * Add Edit buttons
 * Add update route
+ 
+#Deleting Comments
+* Add Destroy route
+* Add Delete button
 
 RESTFUL ROUTES
 
