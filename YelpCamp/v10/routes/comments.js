@@ -54,7 +54,16 @@ router.post("/", isLogedIn, function(req, res) {
 
 // EditCommentRoute
 router.get("/:comment_id/edit", function(req, res) {
-    req.render("comment/edit");
+    Comment.findById(req.params.comment_id, function(err, foundComment) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("comments/edit", {campground_id: req.params.id, comment:foundComment});        
+            console.log(req.params.id);
+            console.log(foundComment);
+        }
+    })
+    
 })
 
 //define middleware
