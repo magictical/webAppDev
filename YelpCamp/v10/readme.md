@@ -95,10 +95,22 @@ v10===========================================================
 * Add Edit route for comments
 * Add Edit buttons
 * Add update route
- 
+
+
 #Deleting Comments
 * Add Destroy route
 * Add Delete button
+
+
+#Authorization Part 2: Comments
+* User can only edit his/her comments
+* User can only delete his/her comments
+* Hide/Show edit and delete buttons
+* Refactor Middleware
+
+
+
+
 
 RESTFUL ROUTES
 
