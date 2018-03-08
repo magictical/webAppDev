@@ -91,6 +91,10 @@ v10===========================================================
 * user can only delete his/her campground
 * Hide/show edit and delete buttons
 
+#Editting Comments
+* Add Edit route for comments
+* Add Edit buttons
+* Add update route
 
 RESTFUL ROUTES
 
