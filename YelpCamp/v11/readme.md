@@ -107,8 +107,6 @@ v10===========================================================
 * User can only delete his/her comments
 * Hide/Show edit and delete buttons
 * Refactor Middleware
-* 
-
 
 
 
