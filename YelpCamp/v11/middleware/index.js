@@ -22,6 +22,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
             }
         });
     } else {
+        req.flash("error", "you need to be logged in to do that");
         res.redirect("back");
     }
 }
@@ -35,6 +36,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
         Comment.findById(req.params.comment_id, function(err, foundComment) {
             if(err) {
                 console.log(err);
+                req.flash("error", "you don't")
                 res.redirect("back");
             } else {
                 //is user own the campground?
@@ -47,6 +49,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
             }
         });
     } else {
+        req.flash("error", "you need to be logged in to do that");
         res.redirect("back");
     }
 }
@@ -59,7 +62,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     }
     //flash message는 /login 라우트로 이동할때 "error"로 보내지고 
     //이 값을 /login라우트와 login.ejs에서 처리한다. 항상 redirect전에 사용할것
-    req.flash("error", "Please Login First!");
+    req.flash("error", "You need to login to do that!!");
     res.redirect("/login");
 }
 
