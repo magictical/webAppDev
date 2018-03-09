@@ -31,12 +31,16 @@
             </div>
         </nav>
         <div class="container">
+            <% if(flashSuccess && flashSuccess.length) {%>
             <div class="alert alert-success" role="alert">
                 <h1><%= flashSuccess %></h1>
             </div>    
+            <% } %>
+            <% if(flashError && flashError.length) {%>
             <div class="alert alert-danger" role="alert">
                 <h1><%= flashError %></h1>
             </div>    
+            <% } %>
         </div>
         
         
