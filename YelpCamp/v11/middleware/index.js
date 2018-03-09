@@ -53,7 +53,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
 
 
 //check logged in
-middlewareObj.isLogedIn = function(req, res, next) {
+middlewareObj.isLoggedIn = function(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     }

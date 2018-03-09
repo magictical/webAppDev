@@ -23,7 +23,7 @@ router.get("/", function(req, res) {
 });
 
 // POST route
-router.post("/", function(req, res) {
+router.post("/", middlewareObj.isLoggedIn, function(req, res) {
     //get name and imgUrl new.ejs from form at new.ejs
     var name = req.body.name;
     var imgUrl = req.body.image;
@@ -49,7 +49,7 @@ router.post("/", function(req, res) {
 });
 
 // new.ejs로 연결 - 이름, 이미지 주소입력을 name으로 받아서 action으로 "/campground로 넘김"
-router.get("/new", middlewareObj.isLogedIn, function(req, res) {
+router.get("/new", middlewareObj.isLoggedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 

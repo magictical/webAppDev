@@ -7,7 +7,7 @@ var middlewareObj = require("../middleware");
 
 //Comments NEW
 //use middleware - isLogedIn to check user login state
-router.get("/new", middlewareObj.isLogedIn, function(req, res) {
+router.get("/new", middlewareObj.isLoggedIn, function(req, res) {
     //find campground by id
     console.log(req.params.id);
     Campground.findById(req.params.id, function(err, campground) {
@@ -23,7 +23,7 @@ router.get("/new", middlewareObj.isLogedIn, function(req, res) {
 
 //Comments Create
 //use middleware - isLogedIn to check user login state
-router.post("/", middlewareObj.isLogedIn, function(req, res) {
+router.post("/", middlewareObj.isLoggedIn, function(req, res) {
     //lookup campground by id
     Campground.findById(req.params.id, function(err, campground) {
         if(err) {
