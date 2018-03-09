@@ -54,6 +54,10 @@ passport.deserializeUser(User.deserializeUser());
 // app 전체에서 user state를 추적할 수 있게됨
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
+  
+  res.locals.flashSuccess= req.flash("error");
+  res.locals.flashError  = req.flash("success");
+  
   next();
 });
 
