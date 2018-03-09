@@ -25,11 +25,12 @@ router.post("/register", function(req, res) {
     User.register(newUser, req.body.password, function(err, user) {
       //에러발생시 /register로 이동
       if(err) {
-          console.log(err);
+          req.flash("error", err.message);
           return res.redirect("/register");
       }
       //이상없으면 auth 완료하고 /campground로이동
       passport.authenticate("local")(req, res, function() {
+          req.flash("success", "Welcome to YELPCAMP!!" + user.username);
           res.redirect("/campgrounds")
       });
     });
