@@ -7,12 +7,13 @@ var express    = require("express"),
     Comment    = require("./models/comment"),
     //use method-override
     methodOverride = require("method-override"),
+    flash          = require("connect-flash"),
     
     //auth APIs
-    passport   = require("passport"),
+    passport      = require("passport"),
     LocalStrategy = require("passport-local"),
-    User = require("./models/user"),
-    seedDB     = require("./seeds");
+    User          = require("./models/user"),
+    seedDB        = require("./seeds");
     
 
 //requring routes
@@ -29,6 +30,8 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 //setting for method-override
 app.use(methodOverride("_method"));
+//setting for ussing flash
+app.use(flash());
 
 
 // PASSPORT CONFIGURATION
