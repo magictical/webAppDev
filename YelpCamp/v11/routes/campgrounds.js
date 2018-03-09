@@ -4,7 +4,7 @@ var Campground    = require("../models/campground");
 var middlewareObj = require("../middleware");
 
 // INDEX route
-router.get("/", middlewareObj.isLogedIn, function(req, res) {
+router.get("/", function(req, res) {
     // send object to campgrounds.ejs template
     // res.render("campgrounds", {campgrounds:campgrounds});
     

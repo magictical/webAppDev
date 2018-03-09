@@ -57,6 +57,9 @@ middlewareObj.isLogedIn = function(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     }
+    //flash message는 /login 라우트로 이동할때 "error"로 보내지고 
+    //이 값을 /login라우트와 login.ejs에서 처리한다. 항상 redirect전에 사용할것
+    req.flash("error", "Please Login First!");
     res.redirect("/login");
 }
 
