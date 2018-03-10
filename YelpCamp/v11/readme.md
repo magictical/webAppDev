@@ -108,8 +108,13 @@ v10===========================================================
 * Hide/Show edit and delete buttons
 * Refactor Middleware
 
+#Adding in Flash!
+* Demo working version
+* Install and configure connect-flash
+* Add bootstrap alerts to header
 
-
+#Refactoring landing page
+*Add background img with fade-in and out
 
 
 RESTFUL ROUTES
